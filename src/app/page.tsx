@@ -82,44 +82,47 @@ export default function Home() {
 
       <ChatWidget />
 
-      <main className="relative z-10 mx-auto flex max-w-6xl flex-col gap-24 px-6 pb-32 pt-20 lg:px-8">
+      <main className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 pb-24 pt-16 sm:gap-20 sm:px-6 sm:pb-28 sm:pt-20 lg:gap-24 lg:px-8 lg:pb-32">
         <section className="text-center">
-          <div className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
+          <div className="mx-auto mb-6 inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-white/70 sm:px-4 sm:text-xs sm:tracking-[0.2em]">
             <ShieldCheck className="h-3.5 w-3.5" aria-hidden />
             Security first · listo para Vercel
           </div>
-          <p className="text-sm uppercase tracking-[0.6em] text-white/50">
+          <p className="text-xs uppercase tracking-[0.35em] text-white/50 sm:text-sm sm:tracking-[0.6em]">
             demoBot · agente AI de atención al cliente
           </p>
-          <h1 className="mt-4 text-balance text-4xl font-semibold leading-tight text-white sm:text-5xl">
+          <h1 className="mt-4 text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
             Responde como tu mejor agente, las 24 horas, con el motor de
             automatización de n8n.
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/70">
+          <p className="mx-auto mt-6 max-w-2xl text-base text-white/70 sm:text-lg">
             Orquesta bots, humanos y flujos en n8n desde una sola landing page.
             demoBot verifica cada respuesta con reglas de seguridad antes de
             enviarla al cliente.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
             <a
               href="https://vercel.com/new"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 sm:w-auto"
             >
               Lanzar demo en Vercel
               <ArrowRight className="h-4 w-4" aria-hidden />
             </a>
             <a
               href="#workflow"
-              className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white/80 transition hover:border-white/40"
+              className="inline-flex w-full items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white/80 transition hover:border-white/40 sm:w-auto"
             >
               Ver cómo se conecta con n8n
             </a>
           </div>
         </section>
 
-        <section className="grid gap-6 rounded-3xl bg-white/5 p-8 ring-1 ring-white/10 sm:grid-cols-3">
+        <section className="grid gap-6 rounded-3xl bg-white/5 p-6 text-center ring-1 ring-white/10 sm:grid-cols-3 sm:p-8 sm:text-left">
           {stats.map((stat) => (
-            <div key={stat.label}>
+            <div
+              key={stat.label}
+              className="sm:border-l sm:border-white/10 sm:pl-6 first:sm:border-l-0 first:sm:pl-0"
+            >
               <p className="text-sm uppercase tracking-[0.3em] text-white/60">
                 {stat.label}
               </p>
@@ -130,12 +133,12 @@ export default function Home() {
           ))}
         </section>
 
-        <section className="grid gap-8 lg:grid-cols-[1.3fr,_0.7fr]">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-2xl shadow-emerald-500/10">
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-emerald-300/80">
+        <section className="grid gap-10 md:grid-cols-[minmax(0,_1.1fr)_minmax(0,_0.9fr)] lg:grid-cols-[1.3fr,_0.7fr]">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-emerald-500/10 sm:p-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-300/80 sm:text-sm sm:tracking-[0.4em]">
               Diferenciales
             </p>
-            <h2 className="mt-4 text-3xl font-semibold text-white">
+            <h2 className="mt-4 text-2xl font-semibold text-white sm:text-3xl">
               Diseñado junto a equipos de soporte exigentes.
             </h2>
             <div className="mt-8 space-y-6">
@@ -157,10 +160,10 @@ export default function Home() {
             </div>
           </div>
           <div className="space-y-6">
-            <article className="rounded-3xl border border-emerald-400/30 bg-slate-950/40 p-6">
+            <article className="rounded-3xl border border-emerald-400/30 bg-slate-950/40 p-5 sm:p-6">
               <div className="flex items-center gap-3 text-emerald-200">
                 <Bot className="h-5 w-5" aria-hidden />
-                <p className="text-sm font-semibold uppercase tracking-[0.4em]">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] sm:text-sm sm:tracking-[0.4em]">
                   Casos de uso
                 </p>
               </div>
@@ -176,10 +179,10 @@ export default function Home() {
                 ))}
               </ul>
             </article>
-            <article className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-6">
+            <article className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-5 sm:p-6">
               <div className="flex items-center gap-3 text-white/70">
                 <Lock className="h-5 w-5" aria-hidden />
-                <p className="text-sm font-semibold uppercase tracking-[0.4em]">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] sm:text-sm sm:tracking-[0.4em]">
                   Seguridad activa
                 </p>
               </div>
@@ -197,13 +200,13 @@ export default function Home() {
 
         <section
           id="workflow"
-          className="grid gap-6 rounded-3xl border border-white/10 bg-white/5 p-8 lg:grid-cols-3"
+          className="grid gap-8 rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 md:grid-cols-2 lg:grid-cols-3"
         >
           <div className="lg:col-span-1">
             <p className="text-sm font-semibold uppercase tracking-[0.4em] text-white/60">
               Integración
             </p>
-            <h2 className="mt-4 text-3xl font-semibold text-white">
+            <h2 className="mt-4 text-2xl font-semibold text-white sm:text-3xl">
               Conecta tu agente de n8n sin exponer tu stack.
             </h2>
             <p className="mt-4 text-sm text-white/70">
@@ -212,25 +215,25 @@ export default function Home() {
               límites de rate desde el panel.
             </p>
           </div>
-          <div className="lg:col-span-2 space-y-4">
+          <div className="space-y-4 lg:col-span-2">
             {workflowSteps.map((step, index) => (
               <div
                 key={step.title}
-                className="flex flex-col gap-2 rounded-2xl border border-white/10 bg-slate-950/40 p-5 sm:flex-row sm:items-center sm:gap-6"
+                className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-slate-950/40 p-5 sm:flex-row sm:items-center sm:gap-6"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 text-lg font-semibold">
                   {index + 1}
                 </div>
                 <div>
-                  <p className="text-lg font-semibold text-white">{step.title}</p>
-                  <p className="text-sm text-white/70">{step.description}</p>
+                  <p className="text-base font-semibold text-white sm:text-lg">{step.title}</p>
+                  <p className="text-sm text-white/70 sm:text-base">{step.description}</p>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="rounded-3xl border border-white/10 bg-gradient-to-br from-emerald-500/20 via-slate-950 to-blue-600/10 p-8 text-center">
+        <section className="rounded-3xl border border-white/10 bg-gradient-to-br from-emerald-500/20 via-slate-950 to-blue-600/10 p-6 text-center sm:p-8">
           <p className="text-sm font-semibold uppercase tracking-[0.4em] text-white/70">
             Monitoreo continuo
           </p>
@@ -241,38 +244,40 @@ export default function Home() {
             Dashboards con métricas de latencia, satisfacción y triggers de
             fallback. Exporta eventos a tu SIEM en segundos.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4 text-left text-sm text-white/80">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2">
+          <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm text-white/80">
+            <span className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white/10 px-4 py-2 sm:w-auto sm:justify-start">
               <Workflow className="h-4 w-4" aria-hidden />
               Auditoría de flujos
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2">
+            <span className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white/10 px-4 py-2 sm:w-auto sm:justify-start">
               <ShieldCheck className="h-4 w-4" aria-hidden />
               Alertas en tiempo real
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2">
+            <span className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white/10 px-4 py-2 sm:w-auto sm:justify-start">
               <Cable className="h-4 w-4" aria-hidden />
               Webhook firmado
             </span>
           </div>
         </section>
 
-        <section className="rounded-3xl border border-white/10 bg-white/5 p-8 text-center">
-          <h2 className="text-3xl font-semibold text-white">¿Listo para probar?</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-white/70">
+        <section className="rounded-3xl border border-white/10 bg-white/5 p-6 text-center sm:p-8">
+          <h2 className="text-2xl font-semibold text-white sm:text-3xl">¿Listo para probar?</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-white/70 sm:text-lg">
             Despliega esta landing en Vercel, conecta tu agente de n8n y prueba
             el chat seguro en menos de 10 minutos. Incluimos script de despliegue,
             métricas y checklist de seguridad.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
             <a
               href="mailto:security@demobot.ai?subject=Quiero%20probar%20demoBot"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100 sm:w-auto"
             >
               Hablar con el equipo
               <ArrowRight className="h-4 w-4" aria-hidden />
             </a>
-            <p className="text-sm text-white/60">Sin tarjeta · Cancelas cuando quieras</p>
+            <p className="text-sm text-white/60 sm:w-auto sm:text-left">
+              Sin tarjeta · Cancelas cuando quieras
+            </p>
           </div>
         </section>
       </main>

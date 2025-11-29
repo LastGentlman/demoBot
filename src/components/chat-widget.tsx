@@ -31,6 +31,7 @@ export function ChatWidget() {
   const [isSending, setIsSending] = useState(false);
   const controllerRef = useRef<AbortController | null>(null);
   const webhookUrl = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL;
+  const panelId = "demobot-chat-panel";
 
   const [messages, setMessages] = useState<Message[]>(() => [
     {
@@ -129,6 +130,8 @@ export function ChatWidget() {
       <button
         type="button"
         aria-label="Abrir chat con demoBot"
+        aria-controls={panelId}
+        aria-expanded={isOpen}
         onClick={() => setIsOpen((prev) => !prev)}
         className="fixed bottom-6 right-6 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-2xl ring-4 ring-emerald-500/30 transition hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/60 sm:bottom-8 sm:right-8"
       >
@@ -136,10 +139,12 @@ export function ChatWidget() {
       </button>
 
       <div
+        id={panelId}
         className={clsx(
-          "fixed bottom-24 right-4 z-40 w-[calc(100%-2rem)] max-w-md scale-95 opacity-0 transition-all sm:bottom-28 sm:right-8",
-          isOpen && "scale-100 opacity-100",
+          "pointer-events-none fixed bottom-24 right-4 z-40 w-[calc(100%-2rem)] max-w-sm scale-95 opacity-0 transition-all duration-200 ease-out sm:bottom-28 sm:right-8 sm:max-w-md md:bottom-32 md:right-12",
+          isOpen && "pointer-events-auto scale-100 opacity-100",
         )}
+        aria-hidden={!isOpen}
         aria-live="polite"
       >
         <div className="flex flex-col overflow-hidden rounded-3xl bg-slate-950/80 text-white shadow-2xl ring-1 ring-white/10 backdrop-blur">
@@ -161,7 +166,7 @@ export function ChatWidget() {
             </button>
           </div>
 
-          <div className="flex flex-col gap-3 px-5 py-4 text-sm leading-relaxed max-h-80 overflow-y-auto scroll-smooth">
+          <div className="flex max-h-[min(60vh,_20rem)] flex-col gap-3 overflow-y-auto px-5 py-4 text-sm leading-relaxed scroll-smooth sm:max-h-80">
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -187,7 +192,7 @@ export function ChatWidget() {
 
           <form
             onSubmit={handleSend}
-            className="flex items-center gap-2 border-t border-white/5 px-4 py-3"
+            className="flex flex-col gap-2 border-t border-white/5 px-4 py-3 sm:flex-row sm:items-center"
           >
             <label htmlFor="chat-input" className="sr-only">
               Escribe tu mensaje
@@ -205,7 +210,7 @@ export function ChatWidget() {
             <button
               type="submit"
               disabled={!secureInput || isSending}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-500 text-white transition enabled:hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-50"
+              className="inline-flex h-12 w-full items-center justify-center rounded-2xl bg-emerald-500 text-white transition enabled:hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-50 sm:h-10 sm:w-10"
             >
               <Send className="h-4 w-4" aria-hidden />
               <span className="sr-only">Enviar mensaje</span>
